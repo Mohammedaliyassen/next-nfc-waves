@@ -51,16 +51,21 @@ function Card() {
   if (loading) return <Loading />;
   if (error || !userData) return <Lost404 />;
 
-const allLinks = Array.isArray(userData.social_links) ? userData.social_links : [];
-const allStories = [
-  ...(userData.expand?.stories ?? []),
-  ...(userData.expand?.regular_users_stories ?? [])
-];
+  const allLinks = Array.isArray(userData.social_links) ? userData.social_links : [];
+  const allStories = [
+    ...(userData.expand?.stories ?? []),
+    ...(userData.expand?.regular_users_stories ?? [])
+  ];
 
-const phoneNumber = allLinks.find(link => link.type.toLowerCase() === 'phone')?.url || '';
-const emailAddress = allLinks.find(link => link.type.toLowerCase() === 'email')?.url || userData.email || '';
-const socialLinks = allLinks.filter(link => link.type.toLowerCase() !== 'phone' && link.type.toLowerCase() !== 'email');
-const avatarUrl = userData.Avatar ? pbRef.current.files.getURL(userData, userData.Avatar) : user_1;
+  const phoneNumber = allLinks.find(link => link.type?.toLowerCase() === 'phone')?.url || '';
+  const emailAddress = allLinks.find(link => link.type?.toLowerCase() === 'email')?.url || userData.email || '';
+  const socialLinks = allLinks.filter(
+    link =>
+      link?.type &&
+      !['phone', 'email'].includes(link.type.toLowerCase())
+  );
+
+  const avatarUrl = userData.Avatar ? pbRef.current.files.getURL(userData, userData.Avatar) : user_1;
   return (
     <div className='nfcPage'>
       <div className='productsSec'>
@@ -77,7 +82,7 @@ const avatarUrl = userData.Avatar ? pbRef.current.files.getURL(userData, userDat
           <ul className="list-group list-group-flush social-icons-list">
             {socialLinks
               .filter(link => link.url && linkStyles[link.type.toLowerCase()])
-              .map((link,key) => {
+              .map((link, key) => {
                 const linkType = link.type.toLowerCase(); // استخدم متغير جديد لسهولة القراءة
                 const href = linkType === 'whatsapp'
                   ? `https://wa.me/${link.url.replace(/\D/g, '')}`

@@ -27,11 +27,6 @@ function App() {
             }
           />
 
-          {/* يمكنك تغيير هذا المسار لصفحة "غير موجود" بدلاً من عرض منتج */}
-          <Route path="*" element={<h1>404: Page Not Found</h1>} />
-
-
-
           <Route path="*" element={<ProductsShow />}></Route>
         </Routes>
       </Router>

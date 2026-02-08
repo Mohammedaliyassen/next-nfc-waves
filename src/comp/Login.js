@@ -3,7 +3,7 @@
 import { React, useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PocketBase from 'pocketbase';
-import './Login.css'; // سنقوم بإنشاء هذا الملف للتنسيق
+import './Login.css';
 
 const Login = () => {
     const [email, setEmail] = useState('');

@@ -85,6 +85,7 @@ function EditPage() {
   //for edit
   const [isAddLinkModalOpen, setAddLinkModalOpen] = useState(false);
   const [newLink, setNewLink] = useState({ type: 'facebook', url: '' });
+  const [code, setCode] = useState('+20');
   const [imageToCrop, setImageToCrop] = useState(null);
   const cropperInstanceRef = useRef(null);
   const imageElementRef = useRef(null);
@@ -167,8 +168,8 @@ function EditPage() {
         id: profileData.id,
         avatar: profileData.Avatar ? pbRef.current.files.getURL(profileData, profileData.Avatar) : '',
         name: profileData.Name || '',
+        job: profileData.job || '',
         bio: profileData.Bio || '',
-        description: profileData.description || '', // افترضت أن المسمى الوظيفي هو description
         email: profileData.email || '',
         links: profileData.social_links || [],
         stories: profileData.expand?.stories?.map(s => ({
@@ -291,6 +292,7 @@ function EditPage() {
   };
   const handleSaveNewLink = () => {
     if (newLink.url) setEditData(p => ({ ...p, links: [...p.links, newLink] }));
+    if (newLink.type === 'telegram' || newLink.type === 'whatsapp' || newLink.type === 'phone') setEditData(p => ({ ...p, links: [...p.links, newLink.url = code + newLink.url] }));
     setAddLinkModalOpen(false);
   };
 
@@ -431,8 +433,7 @@ function EditPage() {
 
   const phoneNumber = userData.links.find(link => link.type === 'phone')?.url || '';
   const emailAddress = userData.links.find(link => link.type === 'email')?.url || '';
-
-  console.log(profileData.job)
+  console.log(profileData)
   if (!userData) return <Loading />;
   return (
 
@@ -675,9 +676,37 @@ function EditPage() {
                 </div>
               )}
             </div>
-            <div className='socialIconLink'>
+            <div className='socialIconLink w-100'>
               <label className="block text-sm font-medium text-gray-700"> </label>
-              <input type="url" value={newLink.url} onChange={e => setNewLink(p => ({ ...p, url: e.target.value }))} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" placeholder="https://example.com" />
+              {newLink.type === 'whatsapp' ?
+                <>
+                  <select id='code' value={code} onChange={e => setCode(e.target.value)}>
+                    <option value="+20" >+20</option>
+                    <option value="+971" >+971</option>
+                    <option value="+966">+966</option>
+                  </select>
+                  <input type="text" value={newLink.url} onChange={e => {
+                    let phone = e.target.value
+                    setNewLink(p => ({ ...p, url: phone }))
+                  }}
+                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md" placeholder="Enter phone number " />
+                </>
+                : newLink.type === 'telegram' ?
+                  <>
+                    <select id='code' value={code} onChange={e => setCode(e.target.value)}>
+                      <option value="+20" >+20</option>
+                      <option value="+971" >+971</option>
+                      <option value="+966">+966</option>
+                    </select>
+                    <input type="text" value={newLink.url} onChange={e => {
+                      let phone = e.target.value
+                      setNewLink(p => ({ ...p, url: phone }))
+                    }}
+                      className="mt-1 block w-full p-2 border border-gray-300 rounded-md" placeholder="Enter phone number " />
+                  </>
+                  : newLink.type === 'phone' ? <input type="text" value={newLink.url} onChange={e => setNewLink(p => ({ ...p, url: e.target.value }))} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" placeholder="Enter phone number " />
+                    : <input type="url" value={newLink.url} onChange={e => setNewLink(p => ({ ...p, url: e.target.value }))} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" placeholder="https://example.com" />
+              }
             </div>
             <div className="flex justify-center gap-4 mt-4">
               <button onClick={handleSaveNewLink} className="save">حفظ</button>

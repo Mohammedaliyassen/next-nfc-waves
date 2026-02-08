@@ -6,7 +6,7 @@ function Story(props) {
   const { linkTo, discStory, storyTittle, imgStory, editbtn = false, deleteBtn, doThis } = props
   return (
     <Card style={{ width: '18rem', padding: '0', margin: '30px', borderRadius: '20px', overflow: 'hidden' }} className='storyCard'>
-      <img variant="top" alt='sss' src={imgStory} />
+      <img variant="top" alt={storyTittle} src={imgStory} />
       <Card.Body>
         <Card.Title style={{ color: '#fff' }}>{storyTittle}</Card.Title>
         <Card.Text style={{ color: '#fff' }}>

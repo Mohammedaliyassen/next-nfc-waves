@@ -83,7 +83,7 @@
     width: 50px;
     height: 50px;
     padding: 0;
-    
+
 }
 
 .nameHolder button:hover {
@@ -98,6 +98,7 @@
     height: 40px;
     top: 0;
 }
+
 .cropImg, .addLink {
     position: fixed;
     top: 50%;
@@ -138,15 +139,14 @@
     display: inline-block;
     outline: none;
     border: none !important;
-    direction: rtl;
+    direction: ltr;
+    width: 100%;
+    text-align: center;
 }
 
 .socialIconSelector, .socialIconLink {
-    display: inline;
-}
-
-.socialIconLink input {
-    direction: ltr;
+    display: block;
+    width: 100%;
 }
 
 .social-icon-item.editable {
@@ -380,12 +380,12 @@
 }
 
 .custom-select-options {
-    width: 42vw;
-    transform: translate(-45%);
+    width: 100%;
+    /* transform: translate(-45%); */
     position: absolute;
-    top: calc(73% + 5px);
-    left: 0;
-    right: 0;
+    /* top: calc(73% + 5px); */
+    /* left: 0; */
+    /* right: 0; */
     background-color: #ffffff;
     border: 1px solid #dee2e6;
     border-radius: 8px;
