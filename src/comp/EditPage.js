@@ -23,7 +23,7 @@ import {
 import { MdDeleteForever, MdLogout } from "react-icons/md";
 import 'quill/dist/quill.snow.css'; // ضروري جداً لظهور لوحة الألوان
 import { Editor } from 'primereact/editor';
-
+import PocketBase from 'pocketbase';
 
 
 const linkStyles = {
@@ -104,7 +104,7 @@ function EditPage() {
   useEffect(() => {
     const init = async () => {
       try {
-        const PocketBase = (await import('https://cdn.jsdelivr.net/npm/pocketbase@latest/dist/pocketbase.es.js')).default;
+
         pbRef.current = new PocketBase('https://waves.pockethost.io');
         const unsubscribe = pbRef.current.authStore.onChange((token, model) => {
           if (model) {
