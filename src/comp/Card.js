@@ -70,7 +70,7 @@ function Card() {
       link?.type &&
       !['phone', 'email'].includes(link.type.toLowerCase())
   );
-
+  console.log(userData)
   const avatarUrl = userData.Avatar ? pbRef.current.files.getURL(userData, userData.Avatar) : user_1;
   return (
     <div className='nfcPage'>
@@ -82,7 +82,11 @@ function Card() {
             </div>
             <h1>{userData.Name || 'User Name'}</h1>
             <h4 style={{ fontSize: 'large' }}>{userData.job || 'User Job'}</h4>
-            <h6 style={{ fontSize: '1.25rem', lineHeight: '30px' }}>{userData.Bio || 'User Description'}</h6>
+            <h6
+              className='bioContainer'
+              style={{ fontSize: '1.25rem', lineHeight: '30px' }}
+              dangerouslySetInnerHTML={{ __html: userData.Bio }}
+            />
           </div>
 
           <ul className="list-group list-group-flush social-icons-list">

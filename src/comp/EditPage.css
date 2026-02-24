@@ -431,3 +431,44 @@
     margin: 15px;
     outline: none;
 }
+
+.ql-snow .ql-formats {
+    display: flex !important;
+    justify-self: center;
+    flex-wrap: wrap;
+    align-items: center;
+    color: #fff;
+    font-size: 1.25rem;
+    line-height: 30px;
+}
+
+.ql-editor p, .ql-editor span {
+    font-size: 1.25rem;
+    line-height: 30px;
+    background: content-box;
+    color: white;
+}
+
+.ql-snow .ql-stroke {
+    stroke: #fff !important;
+    /* ضع اللون الذي تفضله هنا */
+}
+
+/* تغيير لون الأيقونات المملوءة (Fill) مثل زر البولد أو الألوان */
+.ql-snow .ql-fill {
+    fill: #fff !important;
+}
+
+/* تغيير لون الأيقونات التي تحتوي على نص (مثل أيقونة الـ Picker) */
+.ql-snow .ql-picker {
+    color: #fff !important;
+}
+
+.ql-snow.ql-toolbar button:hover .ql-stroke {
+    stroke: #007ad9 !important;
+    /* لون مختلف عند الـ Hover */
+}
+
+.ql-snow.ql-toolbar button:hover .ql-fill {
+    fill: #007ad9 !important;
+}

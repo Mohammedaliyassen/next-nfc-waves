@@ -75,3 +75,8 @@ body {
   -webkit-perspective: 1000px;
   perspective: 1000px;
 }
+
+.bioContainer p {
+  font-size: 1.25rem;
+  line-height: 30px;
+}

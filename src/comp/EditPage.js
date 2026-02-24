@@ -21,6 +21,8 @@ import {
   FaPhoneAlt, FaEnvelope, FaTwitter, FaYoutube, FaTiktok, FaSnapchat
 } from "react-icons/fa";
 import { MdDeleteForever, MdLogout } from "react-icons/md";
+import 'quill/dist/quill.snow.css'; // ضروري جداً لظهور لوحة الألوان
+import { Editor } from 'primereact/editor';
 
 
 
@@ -94,6 +96,10 @@ function EditPage() {
   const pbRef = useRef(null);
   const [editingStory, setEditingStory] = useState(null);
   const [isIconSelectorOpen, setIsIconSelectorOpen] = useState(false);
+
+
+
+
   // for get data ,formed it and save 
   useEffect(() => {
     const init = async () => {
@@ -431,6 +437,39 @@ function EditPage() {
     })) || []
   };
 
+  //تنسق ال tool bar 
+  const renderHeader = () => {
+    return (
+      <span className="ql-formats">
+        {/* إضافة الأزرار التي تريدها فقط */}
+        <button className="ql-bold" aria-label="Bold"></button>
+        <button className="ql-italic" aria-label="Italic"></button>
+        <button className="ql-underline" aria-label="Underline"></button>
+        <button className="ql-script" value="sub"></button>
+        <button className="ql-script" value="super"></button>
+        {/* إضافة زر القوائم */}
+        <span className="ql-formats">
+          <button className="ql-align" value=""></button>      {/* محاذاة لليسار */}
+          <button className="ql-align" value="center"></button> {/* محاذاة للوسط */}
+          <button className="ql-align" value="right"></button>  {/* محاذاة لليمين */}
+          <button className="ql-align" value="justify"></button>{/* ضبط السطور */}
+        </span>
+        <select className="ql-color"></select>
+        <select className="ql-background"></select>
+        {/* إضافة التنسيق */}
+        <button className="ql-list" value="ordered"></button>
+        <button className="ql-list" value="bullet"></button>
+        <button className="ql-clean" aria-label="Remove Styles"></button>
+
+      </span>
+    );
+  };
+
+  const header = renderHeader();
+
+
+
+
   const phoneNumber = userData.links.find(link => link.type === 'phone')?.url || '';
   const emailAddress = userData.links.find(link => link.type === 'email')?.url || '';
   console.log(profileData)
@@ -454,7 +493,22 @@ function EditPage() {
               <div className='editingInput'>
                 <input type="text" name="name" value={editData.name} onChange={handleInputChange} className="textInput" placeholder="الاسم" />
                 <input type="text" name="job" value={editData.job} onChange={handleInputChange} className="textInput" placeholder="الوظيفة" />
-                <textarea resize='false' name="bio" maxLength={500} value={editData.bio} onChange={handleInputChange} className="textareaInput" rows="10" placeholder="الوصف"></textarea>
+
+
+
+                <Editor value={editData.bio}
+                  onTextChange={(e) => setEditData(prev => ({ ...prev, bio: e.htmlValue }))}
+                  headerTemplate={header}
+                  maxLength={500}
+
+                  style={{
+                    height: '320px'
+                  }}
+
+                />
+
+
+                {/* ///<textarea resize='false' name="bio" maxLength={500} value={editData.bio} onChange={handleInputChange} className="textareaInput" rows="10" placeholder="الوصف"></textarea> */}
               </div>
             ) : (
               <>
@@ -463,7 +517,10 @@ function EditPage() {
                   <button onClick={handleEditToggle} className='edit text-gray-500 hover:text-blue-500'><Edit size={18} /></button>
                 </div>
                 <h4 style={{ fontSize: 'large' }}>{userData.job}</h4>
-                <h6 style={{ fontSize: '1.25rem', lineHeight: '30px' }}>{userData.bio}</h6>
+                <h6 className='bioContainer'
+                  style={{ fontSize: '1.25rem', lineHeight: '30px' }}
+                  dangerouslySetInnerHTML={{ __html: userData.bio }}
+                />
               </>
             )}
           </div>
