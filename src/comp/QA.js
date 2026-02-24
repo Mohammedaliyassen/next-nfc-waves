@@ -10,12 +10,12 @@ const QaComponent = () => {
     },
     {
       question: 'How can I contact support?',
-      answer: 'You can contact our support team via email at support@waves.pockethost.io or by phone at +1-800-123-4567.',
+      answer: 'You can contact our support team via email at waves.devtech@gmail.com or by phone at +201157070765.',
       isOpen: false
     },
     {
       question: 'What are your business hours?',
-      answer: 'Our business hours are Monday to Friday, 9 AM to 5 PM EST.',
+      answer: 'Our business hours are all days.',
       isOpen: false
     },
     {

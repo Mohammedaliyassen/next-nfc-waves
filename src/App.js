@@ -5,12 +5,14 @@ import EditPage from './comp/EditPage.js';
 import HomePage from './comp/HomePage.js';
 import Login from './comp/Login.js';
 import ProtectedRoute from './comp/ProtectedRoute.js';
+import Navbar from './comp/Navbar.js';
 // import React, { useState, useEffect } from 'react';
 // import axios from 'axios' need network
 function App() {
   return (
     <div className="App">
       <Router>
+        <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/:id" element={<ProductsShow />}></Route>

@@ -1,6 +1,6 @@
 import { React, useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
-import user_1 from '../imgs/user-1.jpg';
+import user_1 from '../imgs/logo.png';
 import Call from './Call';
 import mail from '../imgs/gmail.png';
 import './Card.css';
@@ -9,6 +9,8 @@ import Lost404 from './Lost404';
 import Loading from './Loading';
 import { FaFacebookSquare, FaInstagram, FaWhatsapp, FaTelegramPlane, FaLinkedin, FaPhoneAlt, FaEnvelope, FaTwitter, FaYoutube, FaTiktok, FaSnapchat } from "react-icons/fa";
 import PocketBase from 'pocketbase';
+
+
 const linkStyles = {
   facebook: { icon: <FaFacebookSquare size={65} />, style: { backgroundColor: '#fff', color: '#1877F2' } },
   instagram: { icon: <FaInstagram size={50} />, style: { backgroundColor: '#E4405F', color: 'white' } },
@@ -28,6 +30,7 @@ function Card() {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const pbRef = useRef(null);
 
   useEffect(() => {
@@ -47,6 +50,9 @@ function Card() {
     };
     fetchUserData();
   }, [id]);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   if (loading) return <Loading />;
   if (error || !userData) return <Lost404 />;
@@ -71,7 +77,7 @@ function Card() {
       <div className='productsSec'>
         <div className="card">
           <div className='userData'>
-            <div className='imgHolder'>
+            <div className='imgHolder' onClick={openModal}>
               <img src={avatarUrl} className="card-img-top" alt={userData.Name} />
             </div>
             <h1>{userData.Name || 'User Name'}</h1>
@@ -83,7 +89,7 @@ function Card() {
             {socialLinks
               .filter(link => link.url && linkStyles[link.type.toLowerCase()])
               .map((link, key) => {
-                const linkType = link.type.toLowerCase(); // استخدم متغير جديد لسهولة القراءة
+                const linkType = link.type?.toLowerCase(); // استخدم متغير جديد لسهولة القراءة
                 const href = linkType === 'whatsapp'
                   ? `https://wa.me/${link.url.replace(/\D/g, '')}`
                   : linkType === 'telegram'
@@ -127,6 +133,14 @@ function Card() {
           )}
         </div>
       </div>
+      {isModalOpen && (
+        <div className="image-modal-overlay" onClick={closeModal}>
+          <span className="close-modal-button" onClick={closeModal}>&times;</span>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <img src={avatarUrl} alt={userData.Name} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -1,9 +1,9 @@
 import './button.css'
 function Button(props) {
-    let { classLabel, label, to } = props
+    let { classLabel, label, to, classLabelForA, alt } = props
     return (
         <>
-            <a href={to}>
+            <a href={to} className={classLabelForA} alt={alt}>
                 <button className={classLabel}>
                     <span className="span">{label}</span>
                     <span className="second">

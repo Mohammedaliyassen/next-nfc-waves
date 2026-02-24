@@ -1,25 +1,37 @@
 .nfcPage {
   text-align: center;
-  background: url("./imgs/Textlayer.png")  center;
+  background: url("./imgs/Textlayer.png") center;
   background-size: contain;
   background-attachment: fixed;
 }
 
-body{
+body {
   animation: gradientMove 10s ease infinite;
-  background: linear-gradient(130deg,#031cff,#000,#03093c);
+  background: linear-gradient(130deg, #031cff, #000, #03093c);
   background-size: 500% 500%;
   color: #00d4ff;
-  font-family: 'Cairo',sans-serif;
+  font-family: 'Cairo', sans-serif;
   margin: 0;
   overflow-x: hidden;
   padding: 0;
 }
+
+
+
 @keyframes gradientMove {
-  0%{background-position-x:  90%;}
-  50%{background-position-x:  50%;}
-  100%{background-position-x: 90%;}
+  0% {
+    background-position-x: 90%;
+  }
+
+  50% {
+    background-position-x: 50%;
+  }
+
+  100% {
+    background-position-x: 90%;
+  }
 }
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -45,9 +57,21 @@ body{
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
 
+.front, .back {
+  -webkit-backface-visibility: hidden !important;
+  backface-visibility: hidden !important;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+.react-card-flip {
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+}

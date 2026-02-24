@@ -3,7 +3,7 @@ import Button from "./Button";
 import Call from "./Call";
 import React, { useState } from "react";
 import ReactCardFlip from "react-card-flip";
-
+import mail from '../imgs/gmail.png';
 function TopHome(props) {
     const { src1, src2 } = props;
     const [isFlipped, setIsFlipped] = useState(false);
@@ -14,6 +14,7 @@ function TopHome(props) {
     const handleMouseLeave = () => {
         setIsFlipped(false);
     };
+
     return (
         <div className="container" >
             <div className="row">
@@ -24,15 +25,14 @@ function TopHome(props) {
                     <ReactCardFlip
                         isFlipped={isFlipped}
                         flipDirection="horizontal"
-                        className="w-100"
+                        className="w-100 react-card-flip"
                     >
                         <div className="front"
                         >
-                            <span><img src={src1} alt="sss" /></span>
+                            <span><img src={src1} alt="NFC Card" /></span>
                         </div>
-                        <div className="back"
-                        >
-                            <span><img src={src2} alt="sss" /></span>
+                        <div className="back">
+                            <span><img src={src2} alt="NFC Card" /></span>
                         </div>
                     </ReactCardFlip>
 
@@ -54,9 +54,13 @@ function TopHome(props) {
                         <Button classLabel='btnGo mt-1 mb-3' label='Sign In' to="https://waves.pockethost.io/login" />
                     </div>
                     <Call telNo='01095303755' />
+                    <a href="mailto:waves.devtech@gmail.com" className="call gmail">
+                        <img src={mail} alt="email icon" />
+                        <p>Mail: <a href={`mailto:waves.devtech@gmail.com`}>waves.devtech@gmail.com</a></p>
+                    </a>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 

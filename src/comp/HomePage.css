@@ -21,11 +21,21 @@
     position: relative;
     animation: upDown 3s infinite ease-in-out;
 }
-@keyframes upDown{
-    0% {top: 40px;}
-    50%{top: 0;}
-    100% {top: 40px;}
+
+@keyframes upDown {
+    0% {
+        top: 40px;
+    }
+
+    50% {
+        top: 0;
+    }
+
+    100% {
+        top: 40px;
+    }
 }
+
 .imgSide::after {
     content: "";
     position: absolute;
@@ -38,10 +48,19 @@
     border-radius: 20px;
     animation: scaleChange 3s infinite ease-in-out;
 }
-@keyframes scaleChange{
-    0% {scale: 1;}
-    50%{scale: 0.9;}
-    100% {scale:1;}
+
+@keyframes scaleChange {
+    0% {
+        scale: 1;
+    }
+
+    50% {
+        scale: 0.9;
+    }
+
+    100% {
+        scale: 1;
+    }
 }
 
 .homePage {
@@ -71,11 +90,15 @@
     z-index: 5;
 }
 
+.carousel-indicators {
+    bottom: -60px;
+}
+
 .homePage .container {
     margin: 50px auto;
 }
 
-.homePage::after {
+/* .homePage::after {
     content: "";
     position: fixed;
     top: -5%;
@@ -87,8 +110,8 @@
     background-size: cover;
     filter: blur(10px);
     z-index: 0;
+} */
 
-}
 @media (max-width:400px) {
     .signBTNs {
         display: flex;
@@ -96,6 +119,7 @@
         flex-direction: column;
         align-items: center;
     }
+
     .imgSide img {
         width: 65%;
         height: 75%;
@@ -104,6 +128,7 @@
         border-radius: 20px;
         shape-outside: border-box;
     }
+
     .imgSide::after {
         content: "";
         position: absolute;
@@ -117,6 +142,7 @@
         border-radius: 20px;
         animation: scaleChange 3s infinite ease-in-out;
     }
+
     .imgSide span {
         display: block;
         width: 100%;
@@ -124,6 +150,7 @@
         position: relative;
         animation: upDown 3s infinite ease-in-out;
     }
+
     .imgSide img {
         width: 110%;
     }
