@@ -2,7 +2,7 @@
 import { React, useEffect, useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import user_1 from '../imgs/user-1.jpg';
+import user_1 from '../imgs/logo.png';
 
 import Call from './Call';
 import mail from '../imgs/gmail.png';
@@ -441,26 +441,37 @@ function EditPage() {
   const renderHeader = () => {
     return (
       <span className="ql-formats">
-        {/* إضافة الأزرار التي تريدها فقط */}
+        {/* التنسيقات الأساسية */}
         <button className="ql-bold" aria-label="Bold"></button>
         <button className="ql-italic" aria-label="Italic"></button>
         <button className="ql-underline" aria-label="Underline"></button>
         <button className="ql-script" value="sub"></button>
         <button className="ql-script" value="super"></button>
-        {/* إضافة زر القوائم */}
+
+        {/* إضافة زر اتجاه النص (RTL/LTR) */}
+        <span className="ql-formats">
+          <button className="ql-direction" value="rtl"></button>
+        </span>
+
+        {/* أزرار المحاذاة */}
         <span className="ql-formats">
           <button className="ql-align" value=""></button>      {/* محاذاة لليسار */}
           <button className="ql-align" value="center"></button> {/* محاذاة للوسط */}
           <button className="ql-align" value="right"></button>  {/* محاذاة لليمين */}
           <button className="ql-align" value="justify"></button>{/* ضبط السطور */}
         </span>
-        <select className="ql-color"></select>
-        <select className="ql-background"></select>
-        {/* إضافة التنسيق */}
-        <button className="ql-list" value="ordered"></button>
-        <button className="ql-list" value="bullet"></button>
-        <button className="ql-clean" aria-label="Remove Styles"></button>
 
+        {/* الألوان والقوائم */}
+        <span className="ql-formats">
+          <select className="ql-color"></select>
+          <select className="ql-background"></select>
+        </span>
+
+        <span className="ql-formats">
+          <button className="ql-list" value="ordered"></button>
+          <button className="ql-list" value="bullet"></button>
+          <button className="ql-clean" aria-label="Remove Styles"></button>
+        </span>
       </span>
     );
   };
@@ -502,7 +513,8 @@ function EditPage() {
                   maxLength={500}
 
                   style={{
-                    height: '320px'
+                    height: '320px',
+                    textDecoration: 'rtl',
                   }}
 
                 />
@@ -514,7 +526,10 @@ function EditPage() {
               <>
                 <div className='nameHolder'>
                   <h1 className='text-2xl font-bold'>{userData.name}</h1>
-                  <button onClick={handleEditToggle} className='edit text-gray-500 hover:text-blue-500'><Edit size={18} /></button>
+                  <button onClick={handleEditToggle} className='edit text-gray-500 hover:text-blue-500'>
+                    <span className='editHight'></span>
+                    <Edit size={18} />
+                  </button>
                 </div>
                 <h4 style={{ fontSize: 'large' }}>{userData.job}</h4>
                 <h6 className='bioContainer'
@@ -789,9 +804,9 @@ function EditPage() {
             </div>
 
             <div className='inputEditStory'>
-              <input type="text" name="name" value={editingStory.name} onChange={handleStoryInputChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md textInput" placeholder="مثال: خاتم ذهب" />
-              <input type="text" name="link" value={editingStory.link} onChange={handleStoryInputChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md textInput text-start" placeholder="مثال:www.example.com" />
-              <textarea name="description" value={editingStory.description} onChange={handleStoryInputChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md textareaInput" rows="3" placeholder="وصف قصير للعمل"></textarea>
+              <input type="text" name="name" value={editingStory.name} onChange={handleStoryInputChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md textInput" placeholder="مثال : السي في الخاص بك" />
+              <input type="text" name="link" value={editingStory.link} onChange={handleStoryInputChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md textInput text-start" placeholder="www.example.com : مثال" />
+              <textarea name="description" value={editingStory.description} onChange={handleStoryInputChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md textareaInput" rows="3" placeholder="وصف الخاص للعمل"></textarea>
             </div>
             <div className="flex justify-center gap-4 mt-4">
               <button onClick={handleSaveStory} className="save bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600">حفظ</button>

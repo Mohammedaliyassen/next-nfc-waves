@@ -6,8 +6,6 @@ import HomePage from './comp/HomePage.js';
 import Login from './comp/Login.js';
 import ProtectedRoute from './comp/ProtectedRoute.js';
 import Navbar from './comp/Navbar.js';
-// import React, { useState, useEffect } from 'react';
-// import axios from 'axios' need network
 function App() {
   return (
     <div className="App">
@@ -16,10 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/:id" element={<ProductsShow />}></Route>
-          {/* <Route path="/edit/:id" element={<EditPage />}></Route> */}
-
           <Route path="/login" element={<Login />} />
-
           <Route
             path="/edit"
             element={
@@ -28,7 +23,6 @@ function App() {
               </ProtectedRoute>
             }
           />
-
           <Route path="*" element={<ProductsShow />}></Route>
         </Routes>
       </Router>

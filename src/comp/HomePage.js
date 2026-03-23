@@ -5,6 +5,9 @@ import cardNFC from "../imgs/FRONT.png"
 import backCardNFC from "../imgs/BACK.JPG"
 import './HomePage.css'
 import QaComponent from "./QA";
+// import HowItWorks from "./HowItWorks.tsx";
+import { HowItWorks } from './HowItWorks.tsx';
+
 // import HeroSection from "./HeroSection";
 function HomePage() {
     return (
@@ -13,6 +16,7 @@ function HomePage() {
                 <TopHome src1={cardNFC} src2={backCardNFC} />
                 {/* <HeroSection /> */}
                 <CarouselCard />
+                <HowItWorks />
                 <QaComponent />
                 <Footer />
             </div>

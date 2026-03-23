@@ -1,9 +1,13 @@
 import './button.css'
 function Button(props) {
-    let { classLabel, label, to, classLabelForA, alt } = props
+    let { classLabel, label, to, classLabelForA, alt, onClick } = props
     return (
         <>
-            <a href={to} className={classLabelForA} alt={alt}>
+            <a href={to}
+                className={classLabelForA}
+                alt={alt}
+                onClick={onClick}
+            >
                 <button className={classLabel}>
                     <span className="span">{label}</span>
                     <span className="second">
@@ -17,9 +21,9 @@ function Button(props) {
                             <g
                                 id="arrow"
                                 stroke="none"
-                                stroke-width="1"
+                                strokeWidth="1"
                                 fill="none"
-                                fill-rule="evenodd"
+                                fillRule="evenodd"
                             >
                                 <path
                                     className="one"

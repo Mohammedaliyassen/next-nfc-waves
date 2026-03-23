@@ -9,7 +9,8 @@ import Lost404 from './Lost404';
 import Loading from './Loading';
 import { FaFacebookSquare, FaInstagram, FaWhatsapp, FaTelegramPlane, FaLinkedin, FaPhoneAlt, FaEnvelope, FaTwitter, FaYoutube, FaTiktok, FaSnapchat } from "react-icons/fa";
 import PocketBase from 'pocketbase';
-
+import VCardBtn from './vcardBtn';
+import SEOHead from "./SEOHead.tsx";
 
 const linkStyles = {
   facebook: { icon: <FaFacebookSquare size={65} />, style: { backgroundColor: '#fff', color: '#1877F2' } },
@@ -24,6 +25,9 @@ const linkStyles = {
   phone: { icon: <FaPhoneAlt size={50} />, style: { backgroundColor: '#34B7F1', color: 'white' } },
   email: { icon: <FaEnvelope size={50} />, style: { backgroundColor: '#EA4335', color: 'white' } },
 };
+
+
+
 
 function Card() {
   const { id } = useParams();
@@ -51,6 +55,37 @@ function Card() {
     fetchUserData();
   }, [id]);
 
+  const handleAddContact = () => {
+    if (!userData) return;
+    console.log(userData)
+    const phone =
+      userData.social_links?.find(l => l.type?.toLowerCase() === "phone")?.url || "";
+    const cleanPhone = phone.replace(/\D/g, "");
+    const vCardData = `BEGIN:VCARD
+VERSION:3.0
+FN:${userData.Name}
+ORG:Waves Studio
+TITLE:${userData.job}
+TEL;TYPE=CELL:+2${cleanPhone}
+EMAIL:${userData.email}
+URL:https://waves.pockethost.io/${userData.id}
+END:VCARD`.trim();
+
+    const blob = new Blob([vCardData], { type: "text/vcard;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+
+
+    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    if (isIOS) {
+      window.open(url, "_self");
+    } else {
+      window.location.href = url;
+    }
+    // cleanup بعد شوية
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  };
+
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
@@ -71,81 +106,94 @@ function Card() {
       !['phone', 'email'].includes(link.type.toLowerCase())
   );
   console.log(userData)
+  const isMobile = /Android|iPhone/i.test(navigator.userAgent);
   const avatarUrl = userData.Avatar ? pbRef.current.files.getURL(userData, userData.Avatar) : user_1;
   return (
-    <div className='nfcPage'>
-      <div className='productsSec'>
-        <div className="card">
-          <div className='userData'>
-            <div className='imgHolder' onClick={openModal}>
-              <img src={avatarUrl} className="card-img-top" alt={userData.Name} />
-            </div>
-            <h1>{userData.Name || 'User Name'}</h1>
-            <h4 style={{ fontSize: 'large' }}>{userData.job || 'User Job'}</h4>
-            <h6
-              className='bioContainer'
-              style={{ fontSize: '1.25rem', lineHeight: '30px' }}
-              dangerouslySetInnerHTML={{ __html: userData.Bio }}
-            />
-          </div>
-
-          <ul className="list-group list-group-flush social-icons-list">
-            {socialLinks
-              .filter(link => link.url && linkStyles[link.type.toLowerCase()])
-              .map((link, key) => {
-                const linkType = link.type?.toLowerCase(); // استخدم متغير جديد لسهولة القراءة
-                const href = linkType === 'whatsapp'
-                  ? `https://wa.me/${link.url.replace(/\D/g, '')}`
-                  : linkType === 'telegram'
-                    ? `https://t.me/+${link.url.replace(/\D/g, '')}`
-                    : link.url;
-                const iconStyle = linkStyles[linkType]?.style || {};
-                const IconComponent = linkStyles[linkType]?.icon || null;
-                return (
-                  <li className="list-group-item social-icon-item" id={linkType} key={key}>
-                    <a href={href} target="_blank" rel="noopener noreferrer" title={linkType}>
-                      <span className={`${linkType} social-icon-wrapper`} style={iconStyle}>
-                        {IconComponent}
-                      </span>
-                    </a>
-                  </li>
-                );
-              })}
-          </ul>
-
-          <div className='stories d-flex align-items-center flex-column'>
-            <h3 className="text-center font-bold text-lg border-b pb-2 mb-2">أعمالنا</h3>
-            {allStories.map((story) => (
-              <Story
-                key={story.id}
-                discStory={story.Product_description}
-                linkTo={story.Product_link}
-                storyTittle={story.Product_name}
-                editbtn={false}
-                imgStory={story.Product_img ? pbRef.current.files.getURL(story, story.Product_img) : 'https://placehold.co/100x100/EFEFEF/333333?text=?'}
+    <>
+      <SEOHead
+        title={userData.Name}
+        description={userData.Bio}
+        image={avatarUrl}
+        slug={userData.id}
+      />
+      <div className='nfcPage'>
+        <div className='productsSec'>
+          <div className="card">
+            <div className='userData'>
+              <div className='imgHolder' onClick={openModal}>
+                <img src={avatarUrl} className="card-img-top" alt={userData.Name} />
+              </div>
+              <h1 className='notranslate'>{userData.Name || 'User Name'}</h1>
+              <h4 style={{ fontSize: 'large' }} className='notranslate'>{userData.job || 'User Job'}</h4>
+              <h6
+                className='bioContainer'
+                style={{ fontSize: '1.25rem', lineHeight: '30px' }}
+                dangerouslySetInnerHTML={{ __html: userData.Bio }}
               />
-            ))}
+            </div>
+
+            <ul className="list-group list-group-flush social-icons-list">
+              {socialLinks
+                .filter(link => link.url && linkStyles[link.type.toLowerCase()])
+                .map((link, key) => {
+                  const linkType = link.type?.toLowerCase(); // استخدم متغير جديد لسهولة القراءة
+                  const href = linkType === 'whatsapp'
+                    ? `https://wa.me/${link.url.replace(/\D/g, '')}`
+                    : linkType === 'telegram'
+                      ? `https://t.me/+${link.url.replace(/\D/g, '')}`
+                      : link.url;
+                  const iconStyle = linkStyles[linkType]?.style || {};
+                  const IconComponent = linkStyles[linkType]?.icon || null;
+                  return (
+                    <li className="list-group-item social-icon-item" id={linkType} key={key}>
+                      <a href={href} target="_blank" rel="noopener noreferrer" title={linkType}>
+                        <span className={`${linkType} social-icon-wrapper`} style={iconStyle}>
+                          {IconComponent}
+                        </span>
+                      </a>
+                    </li>
+                  );
+                })}
+            </ul>
+
+            <div className='stories d-flex align-items-center flex-column'>
+              <h3 className="text-center font-bold text-lg border-b pb-2 mb-2">أعمالنا</h3>
+              {allStories.map((story) => (
+                <Story
+                  key={story.id}
+                  discStory={story.Product_description}
+                  linkTo={story.Product_link}
+                  storyTittle={story.Product_name}
+                  editbtn={false}
+                  imgStory={story.Product_img ? pbRef.current.files.getURL(story, story.Product_img) : 'https://placehold.co/100x100/EFEFEF/333333?text=?'}
+                />
+              ))}
+            </div>
+
+            {phoneNumber && <Call telNo={phoneNumber} />}
+
+            {emailAddress && (
+              <span className="call gmail">
+                <img src={mail} alt="email icon" />
+                <p>Mail: <a href={`mailto:${emailAddress}`}>{emailAddress}</a></p>
+              </span>
+            )}
+            <VCardBtn classLabel="btnGo vCard vCardDownload me-5"
+
+              label={isMobile ? "حفظ جهة الاتصال" : 'تحميل جهةالاتصال'}
+              onClick={handleAddContact} />
           </div>
-
-          {phoneNumber && <Call telNo={phoneNumber} />}
-
-          {emailAddress && (
-            <span className="call gmail">
-              <img src={mail} alt="email icon" />
-              <p>Mail: <a href={`mailto:${emailAddress}`}>{emailAddress}</a></p>
-            </span>
-          )}
         </div>
+        {isModalOpen && (
+          <div className="image-modal-overlay" onClick={closeModal}>
+            <span className="close-modal-button" onClick={closeModal}>&times;</span>
+            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+              <img src={avatarUrl} alt={userData.Name} />
+            </div>
+          </div>
+        )}
       </div>
-      {isModalOpen && (
-        <div className="image-modal-overlay" onClick={closeModal}>
-          <span className="close-modal-button" onClick={closeModal}>&times;</span>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <img src={avatarUrl} alt={userData.Name} />
-          </div>
-        </div>
-      )}
-    </div>
+    </>
   );
 }
 

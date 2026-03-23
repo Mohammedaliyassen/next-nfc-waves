@@ -1,40 +1,64 @@
 .nfcPage {
   text-align: center;
-  background: url("./imgs/Textlayer.png") center;
   background-size: contain;
   background-attachment: fixed;
+  background-image:
+    linear-gradient(to right, #4f46e520 1px, transparent 1px),
+    linear-gradient(to bottom, #4f46e520 1px, transparent 1px),
+    linear-gradient(130deg, #031cff, #000, #03093c);
+  animation: gradientMove 10s ease infinite;
+  background-size: 40px 40px, 40px 40px, 500% 500%;
 }
 
 body {
-  animation: gradientMove 10s ease infinite;
-  background: linear-gradient(130deg, #031cff, #000, #03093c);
-  background-size: 500% 500%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
   color: #00d4ff;
   font-family: 'Cairo', sans-serif;
-  margin: 0;
-  overflow-x: hidden;
-  padding: 0;
+
+  background-image:
+    linear-gradient(to right, #4f46e520 1px, transparent 1px),
+    linear-gradient(to bottom, #4f46e520 1px, transparent 1px),
+    linear-gradient(130deg, #031cff, #000, #03093c);
+  animation: gradientMove 10s ease infinite;
+  background-size: 40px 40px, 40px 40px, 500% 500%;
+
 }
 
 
-
-@keyframes gradientMove {
-  0% {
-    background-position-x: 90%;
-  }
-
-  50% {
-    background-position-x: 50%;
-  }
-
-  100% {
-    background-position-x: 90%;
-  }
-}
+/* --- Remaining Styles --- */
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@media (max-width:400px) {
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    color: #00d4ff;
+    font-family: 'Cairo', sans-serif;
+
+    background-image:
+      linear-gradient(to right, #4f46e520 1px, transparent 1px),
+      linear-gradient(to bottom, #4f46e520 1px, transparent 1px),
+      linear-gradient(130deg, #03093c, #000, #03093c);
+
+    animation: gradientMove 10s ease infinite;
+
+
+    /* Sizes: 40px squares for the grid, 500% for the gradient stretch */
+    background-size: 40px 40px, 40px 40px, 100% 600%;
+
+    /* Initial Position: Grid at top-left (0 0), Gradient at start (0% 50%) */
+    /* background-position: 0 0, 0 0, 0% 50%; */
+
+    /* Prevent the gradient from tiling awkwardly */
+
   }
 }
 
@@ -63,7 +87,6 @@ body {
   }
 }
 
-
 .front, .back {
   -webkit-backface-visibility: hidden !important;
   backface-visibility: hidden !important;
@@ -79,4 +102,18 @@ body {
 .bioContainer p {
   font-size: 1.25rem;
   line-height: 30px;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position-x: 90%;
+  }
+
+  50% {
+    background-position-x: 50%;
+  }
+
+  100% {
+    background-position-x: 90%;
+  }
 }

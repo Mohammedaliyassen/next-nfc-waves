@@ -7,8 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url('../imgs/waves.png') no-repeat 0 150% rgba(0, 7, 27, 0.842);
-    background-size: 100%;
+    background: url('../imgs/waves.png') no-repeat bottom center / 100% 50%, url('../imgs/stars.png')no-repeat top center / 100% 50% rgba(0, 7, 27, 0.226);
     background-attachment: fixed;
 }
 
@@ -162,13 +161,18 @@ a {
         justify-content: center;
         align-items: center;
         width: 100%;
-        background-position: 0 100%;
+        background-size: 250% 50%;
+        overflow: hidden;
     }
 
     .card {
         padding: 30px 10px;
         width: auto;
         margin: 20px;
+    }
+
+    .vCard {
+        width: 50%;
     }
 
     .imgHolder {
@@ -194,6 +198,11 @@ a {
         padding: 0 10px;
         overflow: hidden;
         justify-content: flex-start;
+    }
+
+    .vCard {
+        width: 80%;
+
     }
 
     .storyCard {
@@ -236,4 +245,16 @@ a {
     font-size: 40px;
     font-weight: bold;
     cursor: pointer;
+}
+
+.vCard {
+    position: fixed;
+    top: 88%;
+    width: auto;
+    left: 50%;
+    transform: translate(-50%, 0) !important;
+    text-align: center;
+    display: flex !important;
+    justify-content: center;
+    text-wrap-mode: nowrap;
 }

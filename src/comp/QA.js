@@ -10,7 +10,7 @@ const QaComponent = () => {
     },
     {
       question: 'How can I contact support?',
-      answer: 'You can contact our support team via email at waves.devtech@gmail.com or by phone at +201157070765.',
+      answer: 'You can contact our support team via email at waves.devtech@gmail.com or by phone at +201095303755.',
       isOpen: false
     },
     {

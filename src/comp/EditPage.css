@@ -74,6 +74,7 @@
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
+    position: relative;
 }
 
 .nameHolder button {
@@ -97,6 +98,45 @@
     width: 40px;
     height: 40px;
     top: 0;
+}
+
+.editHight {
+    background: #7f7f7f73;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    border-radius: 50%;
+    left: 40px;
+    top: -20px;
+}
+
+.editHight::before {
+    content: "";
+    background: #7f7f7f73;
+    width: 47px;
+    height: 47px;
+    position: absolute;
+    border-radius: 50%;
+    left: -40px;
+    top: 20px;
+}
+
+.editHight::after {
+    content: "تعديل";
+    background: #7f7f7f73;
+    width: 140px;
+    height: 50px;
+    position: absolute;
+    border-radius: 30px;
+    left: 20px;
+    top: -35px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: blink;
+    font-style: oblique;
+    font-size: x-large;
 }
 
 .cropImg, .addLink {
@@ -186,6 +226,7 @@
     border: none;
     border-radius: 15px;
     padding: 12px;
+    width: auto;
 }
 
 .addStoryBtn:hover {

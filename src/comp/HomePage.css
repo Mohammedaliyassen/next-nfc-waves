@@ -12,6 +12,20 @@
     display: flex;
     justify-content: center;
     height: 200px;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+}
+
+.imgSide .react-card-flip {
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    -webkit-perspective: 1000px;
+    perspective: 1000px
+}
+
+.imgSide .react-card-flip .front {
+    -webkit-backface-visibility: hidden !important;
+    backface-visibility: hidden !important;
 }
 
 .imgSide span {
@@ -21,6 +35,7 @@
     position: relative;
     animation: upDown 3s infinite ease-in-out;
 }
+
 
 @keyframes upDown {
     0% {
