@@ -1,5 +1,6 @@
 import React from 'react';
 import './Lost404.css';
+import SEOHead from './SEOHead.tsx';
 
 const NfcSignalIcon = ({ className }) => (
   <svg
@@ -27,6 +28,12 @@ const NfcSignalIcon = ({ className }) => (
 const Lost404 = () => {
   return (
     <>
+      <SEOHead
+        title="الصفحة غير موجودة"
+        description="الصفحة المطلوبة غير موجودة على Waves NFC أو ربما تم نقلها."
+        image="/logo.png"
+        noIndex={true}
+      />
       <div className="nfc-404-container">
         <div className="nfc-card">
           <div className="nfc-icon-wrapper">

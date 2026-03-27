@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import Button from './Button';
 import './Navbar.css';
-import logo from '../imgs/logo.png';
 
 function Navbar() {
     const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -29,7 +28,7 @@ function Navbar() {
         <nav className={`navbar ${visible ? '' : 'navbar--hidden'}`}>
             <div className="navbar-container">
                 <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-                    <img src={logo} alt="Logo" />
+                    <img src="/logo.png" alt="Logo" />
                 </Link>
                 <div className="menu-icon" onClick={handleClick}>
                     <div className={click ? 'bar1 toggled' : 'bar1'}></div>

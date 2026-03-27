@@ -2,7 +2,7 @@
 import { React, useEffect, useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import user_1 from '../imgs/logo.png';
+
 
 import Call from './Call';
 import mail from '../imgs/gmail.png';
@@ -24,6 +24,7 @@ import { MdDeleteForever, MdLogout } from "react-icons/md";
 import 'quill/dist/quill.snow.css'; // ضروري جداً لظهور لوحة الألوان
 import { Editor } from 'primereact/editor';
 import PocketBase from 'pocketbase';
+import SEOHead from './SEOHead.tsx';
 
 
 const linkStyles = {
@@ -486,13 +487,20 @@ function EditPage() {
   console.log(profileData)
   if (!userData) return <Loading />;
   return (
-
+    <>
+    <SEOHead
+      title="لوحة التحكم"
+      description="إدارة الملف الشخصي والروابط والأعمال الخاصة ببطاقة Waves NFC."
+      image="/logo.png"
+      slug="edit"
+      noIndex={true}
+    />
     <div className='nfcPage'>
       <div className='productsSec'>
         <div className="card">
           <div className='userData'>
             <div className='imgHolder'>
-              <img src={userData.avatar || user_1} className="card-img-top" alt={userData.name} />
+              <img src={userData.avatar || '/logo.png'} className="card-img-top" alt={userData.name} />
               {isEditing && (
                 <button onClick={() => fileInputRef.current.click()} className='camera absolute bottom-0 right-0 bg-blue-500 text-white rounded-full p-2 hover:bg-blue-600'>
                   <Camera size={20} className='cameraIcon' />
@@ -816,9 +824,9 @@ function EditPage() {
         </div>
       )}
     </div>
+    </>
   );
 }
 
 export default EditPage;
-
 

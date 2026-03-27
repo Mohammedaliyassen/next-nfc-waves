@@ -1,6 +1,6 @@
 import { React, useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
-import user_1 from '../imgs/logo.png';
+
 import Call from './Call';
 import mail from '../imgs/gmail.png';
 import './Card.css';
@@ -11,6 +11,7 @@ import { FaFacebookSquare, FaInstagram, FaWhatsapp, FaTelegramPlane, FaLinkedin,
 import PocketBase from 'pocketbase';
 import VCardBtn from './vcardBtn';
 import SEOHead from "./SEOHead.tsx";
+import ShareButton from './ShareButton';
 
 const linkStyles = {
   facebook: { icon: <FaFacebookSquare size={65} />, style: { backgroundColor: '#fff', color: '#1877F2' } },
@@ -107,15 +108,18 @@ END:VCARD`.trim();
   );
   console.log(userData)
   const isMobile = /Android|iPhone/i.test(navigator.userAgent);
-  const avatarUrl = userData.Avatar ? pbRef.current.files.getURL(userData, userData.Avatar) : user_1;
+  const avatarUrl = userData.Avatar ? pbRef.current.files.getURL(userData, userData.Avatar) : '/logo.png';
+  const seoDescription = userData.Bio || `${userData.Name || 'Waves user'}${userData.job ? ` - ${userData.job}` : ''}`;
   return (
     <>
       <SEOHead
         title={userData.Name}
-        description={userData.Bio}
+        description={seoDescription}
         image={avatarUrl}
         slug={userData.id}
+        type="profile"
       />
+      <ShareButton />
       <div className='nfcPage'>
         <div className='productsSec'>
           <div className="card">
