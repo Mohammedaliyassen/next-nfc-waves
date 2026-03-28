@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './ShareButton.css';
 import { FaShareAlt, FaFacebook, FaWhatsapp, FaLinkedin, FaTwitter, FaCopy } from 'react-icons/fa';
 
 const ShareButton = () => {

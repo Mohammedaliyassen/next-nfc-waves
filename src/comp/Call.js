@@ -1,5 +1,4 @@
-
-import phone from '../imgs/phone-1.png'
+import { ICON_ASSETS } from '../lib/assets';
 
 
 function Call(props) {
@@ -8,7 +7,7 @@ function Call(props) {
         <>
             {editMode ?
                 <span className="call" id='whatsapp' >
-                    <img src={phone} alt='whatsapp' />
+                    <img src={ICON_ASSETS.phone} alt='whatsapp' />
                     <input
                         type="tel"
                         name="phone"
@@ -21,7 +20,7 @@ function Call(props) {
                 :
                 <a href={`tel:${telNo}`}>
                     <span className="call" id='whatsapp'>
-                        <img src={phone} alt='whatsapp' />
+                        <img src={ICON_ASSETS.phone} alt='whatsapp' />
                         <p> call : <a href={`tel:${telNo}`}>{telNo}</a></p>
                     </span>
                 </a>

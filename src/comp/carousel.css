@@ -1,21 +1,29 @@
-.carouselStyle{
+.carouselStyle {
     width: 100%;
     height: 60%;
 }
-.carouselStyle img{
+
+.carouselStyle img {
     width: 40%;
     border-radius: 20px;
+    height: fit-content !important;
+    object-fit: contain
 }
-.carouselStyle .carousel-caption{
+
+.carouselStyle .carousel-caption {
     bottom: -0.75rem !important;
 }
-@media (max-width:700px){
-    .carouselStyle{
+
+@media (max-width:700px) {
+    .carouselStyle {
         width: 100%;
         height: 60%;
     }
-    .carouselStyle img{
+
+    .carouselStyle img {
         width: 90%;
         border-radius: 20px;
+        height: fit-content !important;
+        object-fit: contain
     }
 }

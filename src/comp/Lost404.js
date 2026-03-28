@@ -1,6 +1,4 @@
-import React from 'react';
-import './Lost404.css';
-import SEOHead from './SEOHead.tsx';
+import React from "react";
 
 const NfcSignalIcon = ({ className }) => (
   <svg
@@ -27,37 +25,28 @@ const NfcSignalIcon = ({ className }) => (
 
 const Lost404 = () => {
   return (
-    <>
-      <SEOHead
-        title="الصفحة غير موجودة"
-        description="الصفحة المطلوبة غير موجودة على Waves NFC أو ربما تم نقلها."
-        image="/logo.png"
-        noIndex={true}
-      />
-      <div className="nfc-404-container">
-        <div className="nfc-card">
-          <div className="nfc-icon-wrapper">
-            <NfcSignalIcon />
-          </div>
-          <div className="error-code">404</div>
-          <div className="error-status">صفحة ممكن تشتريها</div>
+    <div className="nfc-404-container">
+      <div className="nfc-card">
+        <div className="nfc-icon-wrapper">
+          <NfcSignalIcon />
         </div>
-
-        <h1 className="main-title">
-          الظاهر انك بتدور علي حاجة مش موجودة 
-        </h1>
-
-        <p className="subtitle">
-          الصفحة التي تبحث عنها غير موجودة. ربما تم نقلها أو حذفها، أو أن الرابط الذي اتبعته غير صحيح و لكن تقدر تاخدها لحسابك الخاص.
-        </p>
-
-        <div className="home-button-wrapper">
-          <a href="https://waves.pockethost.io/" className="home-button" >
-            اتواصل معانا عشان تكون جزء من كيان الشركة
-          </a>
-        </div>
+        <div className="error-code">404</div>
+        <div className="error-status">صفحة ممكن تشتريها</div>
       </div>
-    </>
+
+      <h1 className="main-title">الظاهر انك بتدور علي حاجة مش موجودة</h1>
+
+      <p className="subtitle">
+        الصفحة التي تبحث عنها غير موجودة. ربما تم نقلها أو حذفها، أو أن الرابط
+        الذي اتبعته غير صحيح و لكن تقدر تاخدها لحسابك الخاص.
+      </p>
+
+      <div className="home-button-wrapper">
+        <a href="https://waves.pockethost.io/" className="home-button">
+          اتواصل معانا عشان تكون جزء من كيان الشركة
+        </a>
+      </div>
+    </div>
   );
 };
 

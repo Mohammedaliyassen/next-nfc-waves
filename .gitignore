@@ -3,3 +3,4 @@ build/
 *.zipnode_modules/
 build/
 *.zip
+.next/

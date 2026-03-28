@@ -7,7 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url('../imgs/waves.png') no-repeat bottom center / 100% 50%, url('../imgs/stars.png')no-repeat top center / 100% 50% rgba(0, 7, 27, 0.226);
+    background: url('/images/waves.png') no-repeat bottom center / 100% 50%, url('/images/stars.png')no-repeat top center / 100% 50% rgba(0, 7, 27, 0.226);
     background-attachment: fixed;
 }
 
@@ -15,7 +15,7 @@
     padding: 30px 10px;
     width: 60vw;
     margin: 20px;
-    background: url('../imgs/stars.png') no-repeat #0d003c78;
+    background: url('/images/stars.png') no-repeat #0d003c78;
     background-size: 100%;
     border-radius: 10px;
 }

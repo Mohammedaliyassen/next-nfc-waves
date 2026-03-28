@@ -1,0 +1,28 @@
+@import "../index.css";
+@import "../App.css";
+@import "../comp/button.css";
+@import "../comp/Card.css";
+@import "../comp/carousel.css";
+@import "../comp/footer.css";
+@import "../comp/HomePage.css";
+@import "../comp/loading.css";
+@import "../comp/Login.css";
+@import "../comp/Lost404.css";
+@import "../comp/Navbar.css";
+@import "../comp/QaComponent.css";
+@import "../comp/ShareButton.css";
+@import "../comp/story.css";
+@import "../comp/EditPage.css";
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  min-width: 320px;
+}
+
+a {
+  text-decoration: none;
+}

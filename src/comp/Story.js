@@ -1,7 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import './story.css'
-import Edit from './Edit.tsx';
+import Edit from './Edit';
 function Story(props) {
   const { linkTo, discStory, storyTittle, imgStory, editbtn = false, deleteBtn, doThis } = props
   return (
