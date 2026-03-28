@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 320">
+  <rect width="512" height="320" rx="32" fill="#1e293b"/>
+  <rect x="76" y="78" width="124" height="94" rx="18" fill="#fff"/>
+  <path d="M76 104h124" stroke="#cbd5e1" stroke-width="10"/>
+  <circle cx="98" cy="91" r="6" fill="#ef4444"/>
+  <circle cx="116" cy="91" r="6" fill="#f59e0b"/>
+  <circle cx="134" cy="91" r="6" fill="#22c55e"/>
+  <text x="226" y="122" fill="#fff" font-size="42" font-family="Arial, sans-serif" font-weight="700">Website</text>
+  <text x="226" y="168" fill="#cbd5e1" font-size="22" font-family="Arial, sans-serif">Landing page or web project</text>
+</svg>

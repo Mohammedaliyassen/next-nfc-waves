@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 320">
+  <rect width="512" height="320" rx="32" fill="#0ea5e9"/>
+  <rect x="82" y="78" width="110" height="110" rx="20" fill="#fff"/>
+  <path d="M137 102v60M107 132h60" stroke="#0ea5e9" stroke-width="16" stroke-linecap="round"/>
+  <text x="228" y="122" fill="#fff" font-size="42" font-family="Arial, sans-serif" font-weight="700">Clinic</text>
+  <text x="228" y="168" fill="#e0f2fe" font-size="22" font-family="Arial, sans-serif">Medical and health services</text>
+</svg>

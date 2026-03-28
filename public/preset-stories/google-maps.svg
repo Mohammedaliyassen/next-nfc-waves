@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 320">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0f9d58"/>
+      <stop offset="100%" stop-color="#4285f4"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="320" rx="32" fill="url(#g)"/>
+  <circle cx="128" cy="110" r="44" fill="#fff"/>
+  <path d="M128 65c-26 0-47 21-47 47 0 34 47 84 47 84s47-50 47-84c0-26-21-47-47-47zm0 64a17 17 0 1 1 0-34 17 17 0 0 1 0 34z" fill="#ea4335"/>
+  <text x="208" y="124" fill="#fff" font-size="38" font-family="Arial, sans-serif" font-weight="700">Google Maps</text>
+  <text x="208" y="168" fill="#eaf3ff" font-size="22" font-family="Arial, sans-serif">Location and branches</text>
+  <text x="208" y="212" fill="#eaf3ff" font-size="22" font-family="Arial, sans-serif">⭐⭐⭐⭐⭐</text>
+</svg>

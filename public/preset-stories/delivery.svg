@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 320">
+  <rect width="512" height="320" rx="32" fill="#16a34a"/>
+  <path d="M84 148h96v30H84zM180 132h42l24 22v24h-66z" fill="#fff"/>
+  <circle cx="116" cy="190" r="18" fill="#dcfce7"/>
+  <circle cx="214" cy="190" r="18" fill="#dcfce7"/>
+  <text x="266" y="122" fill="#fff" font-size="40" font-family="Arial, sans-serif" font-weight="700">Delivery</text>
+  <text x="266" y="168" fill="#dcfce7" font-size="22" font-family="Arial, sans-serif">Shipping and order card</text>
+</svg>

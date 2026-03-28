@@ -17,6 +17,9 @@ export const metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
+  icons: {
+    icon: '/logo.png',
+  },
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
@@ -43,7 +46,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ar">
-      <body>
+      <body suppressHydrationWarning={true}>
         <Providers>
           <Navbar />
           {children}

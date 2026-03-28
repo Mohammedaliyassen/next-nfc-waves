@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 320">
+  <rect width="512" height="320" rx="32" fill="#111827"/>
+  <rect x="82" y="82" width="112" height="84" rx="18" fill="#fff"/>
+  <path d="M98 150l22-28 18 18 18-24 22 34" fill="none" stroke="#111827" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="224" y="122" fill="#fff" font-size="42" font-family="Arial, sans-serif" font-weight="700">Portfolio</text>
+  <text x="224" y="168" fill="#d1d5db" font-size="22" font-family="Arial, sans-serif">Show your featured work</text>
+</svg>

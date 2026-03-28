@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 320">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="320" rx="32" fill="url(#g)"/>
+  <path d="M126 68c-28 0-50 22-50 50 0 37 50 94 50 94s50-57 50-94c0-28-22-50-50-50zm0 70a20 20 0 1 1 0-40 20 20 0 0 1 0 40z" fill="#fff"/>
+  <text x="214" y="122" fill="#fff" font-size="42" font-family="Arial, sans-serif" font-weight="700">Location</text>
+  <text x="214" y="168" fill="#dbeafe" font-size="22" font-family="Arial, sans-serif">Branch or place card</text>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 320">
+  <rect width="512" height="320" rx="32" fill="#7c3aed"/>
+  <path d="M84 166l48-42 48 42v34H84zM104 142v-30h24v10" fill="#ede9fe" stroke="#ede9fe" stroke-width="8" stroke-linejoin="round"/>
+  <text x="220" y="122" fill="#fff" font-size="38" font-family="Arial, sans-serif" font-weight="700">Real Estate</text>
+  <text x="220" y="168" fill="#ede9fe" font-size="22" font-family="Arial, sans-serif">Projects and property cards</text>
+</svg>

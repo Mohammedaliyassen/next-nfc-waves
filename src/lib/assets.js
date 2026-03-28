@@ -1,13 +1,15 @@
-import backCardImage from "../../public/images/BACK.JPG";
-import example1Image from "../../public/images/ex1.png";
-import example2Image from "../../public/images/ex2.png";
-import example3Image from "../../public/images/ex3.png";
-import frontCardImage from "../../public/images/FRONT.png";
-import textLayerImage from "../../public/images/Textlayer.png";
+import backCardImage from "../assets/images/BACK.png";
+import example1Image from "../assets/images/ex1.png";
+import example2Image from "../assets/images/ex2.png";
+import example3Image from "../assets/images/ex3.png";
+import frontCardImage from "../assets/images/FRONT.png";
+import textLayerImage from "../assets/images/Textlayer.png";
+import gmailImage from "../assets/images/gmail.png";
+import phoneImage from "../assets/images/phone-1.png";
 
 export const ICON_ASSETS = {
-  email: "/images/gmail.png",
-  phone: "/images/phone-1.png",
+  email: gmailImage,
+  phone: phoneImage,
 };
 
 export const SHOWCASE_ASSETS = {

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 320">
+  <rect width="512" height="320" rx="32" fill="#0f172a"/>
+  <path d="M78 104h108l-10 30H88zM96 134h72v50H96z" fill="#fff"/>
+  <path d="M96 104l8-24h56l8 24" fill="none" stroke="#f8fafc" stroke-width="10" stroke-linejoin="round"/>
+  <text x="224" y="120" fill="#fff" font-size="42" font-family="Arial, sans-serif" font-weight="700">Store</text>
+  <text x="224" y="166" fill="#cbd5e1" font-size="22" font-family="Arial, sans-serif">Business and services</text>
+</svg>

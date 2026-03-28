@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 530 320">
+  <rect width="530" height="320" rx="32" fill="#1d4ed8"/>
+  <rect x="82" y="78" width="110" height="96" rx="20" fill="#fff"/>
+  <path d="M102 110h70M102 136h70M102 162h44" stroke="#1d4ed8" stroke-width="10" stroke-linecap="round"/>
+  <path d="M108 64v28M166 64v28" stroke="#fff" stroke-width="12" stroke-linecap="round"/>
+  <text x="226" y="122" fill="#fff" font-size="42" font-family="Arial, sans-serif" font-weight="700">Booking</text>
+  <text x="226" y="168" fill="#dbeafe" font-size="22" font-family="Arial, sans-serif">Appointments and reservations</text>
+</svg>

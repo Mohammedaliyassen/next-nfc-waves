@@ -77,88 +77,39 @@
     position: relative;
 }
 
-.nameHolder button {
-    background: content-box;
-    color: white;
-    border: none;
-    width: 50px;
-    height: 50px;
-    padding: 0;
-
-}
-
-.nameHolder button:hover {
-    background: content-box;
-    color: wheat;
-    border: none;
-
-}
-
-.nameHolder button svg {
-    width: 40px;
-    height: 40px;
-    top: 0;
-}
-
-.editHight {
-    background: #7f7f7f73;
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    border-radius: 50%;
-    left: 40px;
-    top: -20px;
-}
-
-.editHight::before {
-    content: "";
-    background: #7f7f7f73;
-    width: 47px;
-    height: 47px;
-    position: absolute;
-    border-radius: 50%;
-    left: -40px;
-    top: 20px;
-}
-
-.editHight::after {
-    content: "تعديل";
-    background: #7f7f7f73;
-    width: 140px;
-    height: 50px;
-    position: absolute;
-    border-radius: 30px;
-    left: 20px;
-    top: -35px;
-    color: #ffffff;
+.cropImg,
+.addLink,
+.editStoryHolder {
+    position: fixed;
+    inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-decoration: blink;
-    font-style: oblique;
-    font-size: x-large;
-}
-
-.cropImg, .addLink {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-.cropImg {
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.72);
     z-index: 1000;
 }
 
-.addLink {
-    width: 50%;
-
+.addLink .addLinker,
+.cropImg .croper,
+.editStoryHolder .modalSurface {
+    width: min(100%, 620px);
+    max-height: 80%;
+    max-height: 80%;
+    overflow: scroll;
+    scroll-behavior: smooth;
+    overflow: auto;
+    /* Show scrollbar only when content overflows */
+    scrollbar-width: thin;
+    /* Use a thin scrollbar (Firefox) */
+    scrollbar-color: #6c8bdf transparent;
+    /* Thumb color, Track color (Firefox) */
+    scrollbar-gutter: stable;
 }
 
+
 .addLink .addLinker {
-    padding: 20px;
+    padding: 24px;
 }
 
 .cropImg .croper {
@@ -176,12 +127,11 @@
 }
 
 .socialIconSelector select, .socialIconLink input {
-    display: inline-block;
+    display: block;
     outline: none;
-    border: none !important;
     direction: ltr;
     width: 100%;
-    text-align: center;
+    text-align: left;
 }
 
 .socialIconSelector, .socialIconLink {
@@ -236,17 +186,6 @@
     padding: 12px;
 }
 
-.editStoryHolder {
-    width: 65%;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 2px 1px 1px 500px #000000bf;
-}
-
 .storyImgHolder {
     position: relative;
     margin-top: 10px;
@@ -296,19 +235,23 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    text-align: center;
+    text-align: right;
     margin-top: 10px;
+    gap: 14px;
 }
 
 .inputEditStory input, .inputEditStory textarea {
-
-    text-align: center;
+    text-align: right;
 }
 
 .storyCard .deletStory {
     background: red !important;
     margin-top: 10px;
     padding: 7px;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
 }
 
 .storyCard .deletStory:hover {
@@ -349,16 +292,6 @@
 .cancel:hover {
     color: white;
     background-color: rgba(255, 0, 0, 0.418);
-}
-
-@media (max-width:950px) {
-    .addLink {
-        width: 100%;
-    }
-
-    .editStoryHolder {
-        width: 100%;
-    }
 }
 
 .instagram {
@@ -412,6 +345,7 @@
     border-radius: 8px;
     cursor: pointer;
     transition: border-color 0.2s;
+    justify-content: flex-start;
 }
 
 .custom-select-button .arrow {
@@ -463,6 +397,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 .emailInput, .callInput {
@@ -512,4 +447,598 @@
 
 .ql-snow.ql-toolbar button:hover .ql-fill {
     fill: #007ad9 !important;
+}
+
+.editGuide,
+.editSectionCard {
+    width: 100%;
+    margin: 0 0 24px;
+    padding: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+}
+
+.dashboardTabs {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 0 0 24px;
+}
+
+.dashboardTabButton {
+    min-height: 52px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #d8e7ff;
+    font-weight: 700;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.dashboardTabButton.is-active {
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.24), rgba(37, 99, 235, 0.32));
+    border-color: rgba(96, 165, 250, 0.6);
+    color: #fff;
+    box-shadow: 0 14px 32px rgba(37, 99, 235, 0.18);
+}
+
+.dashboardTabButton:hover {
+    transform: translateY(-1px);
+}
+
+.editGuideHeader h2,
+.editSectionHeader h3 {
+    margin: 0;
+    color: #fff;
+}
+
+.editGuideHeader p,
+.editSectionHeader p,
+.fieldHint,
+.editActionsHint,
+.storiesHint,
+.modalHelperText,
+.editInlineHint {
+    color: #d9e6ff;
+    line-height: 1.8;
+}
+
+.editModeBadge,
+.editStatPill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(251, 198, 56, 0.12);
+    border: 1px solid rgba(251, 198, 56, 0.32);
+    color: #fbc638;
+    font-weight: 700;
+    font-size: 0.92rem;
+}
+
+.editGuideHeader p {
+    margin: 12px 0 0;
+}
+
+.editGuideSteps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 18px;
+}
+
+.editGuideStep {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+    border-radius: 18px;
+    background: rgba(4, 15, 59, 0.38);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.editGuideStep strong {
+    color: #fff;
+    font-size: 1rem;
+}
+
+.editGuideStep span {
+    color: #d6e6ff;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.editInlineHint {
+    margin: 0 0 18px;
+    font-size: 0.95rem;
+}
+
+.editingInput {
+    gap: 18px;
+}
+
+.editSectionHeader {
+    margin-bottom: 18px;
+}
+
+.editSectionHeaderSplit {
+    align-items: center;
+    gap: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.editFieldGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: right;
+}
+
+.editFieldGroup label,
+.primaryContactItem label {
+    margin-bottom: 8px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.editFieldGroup .textInput,
+.primaryContactItem .emailInput,
+.primaryContactItem .callInput {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 14px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    font-size: 1rem;
+    text-align: right;
+}
+
+.editFieldGroup .compactInput {
+    font-size: 1rem;
+}
+
+.fieldHint {
+    margin-top: 8px;
+    font-size: 0.92rem;
+}
+
+.editorShell {
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.editorShell .ql-toolbar.ql-snow,
+.editorShell .ql-container.ql-snow {
+    border: none !important;
+}
+
+.editorShell .ql-toolbar.ql-snow {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.editStatsRow {
+    margin-bottom: 16px;
+}
+
+.inlineAddButton,
+.addStoryBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 48px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 16px;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.inlineAddButton {
+    background: linear-gradient(135deg, #0ea5e9, #2563eb);
+    box-shadow: 0 12px 28px rgba(37, 99, 235, 0.26);
+}
+
+.inlineAddButton:hover,
+.addStoryBtn:hover {
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+}
+
+.storiesSection .stories {
+    width: 100%;
+}
+
+.storiesHint,
+.modalHelperText {
+    margin: 8px 0 0;
+}
+
+.emptyEditState {
+    padding: 18px;
+    border: 1px dashed rgba(255, 255, 255, 0.26);
+    border-radius: 16px;
+    color: #dce8ff;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.primaryContactGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.primaryContactItem {
+    text-align: right;
+}
+
+.primaryContactItem .call {
+    width: 100%;
+    margin: 0;
+    justify-content: flex-start;
+    padding: 6px 12px;
+    border-radius: 18px;
+}
+
+.primaryContactItem .emailInput,
+.primaryContactItem .callInput {
+    color: #111;
+}
+
+.modalSurface {
+    border-radius: 24px;
+    background: linear-gradient(180deg, #f8fbff, #edf4ff);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+    max-height: calc(100vh - 32px);
+    overflow-y: auto;
+}
+
+.modalSurface h2,
+.modalSurface label {
+    color: #0f172a;
+}
+
+.modalSurface .modalHelperText {
+    color: #475569;
+}
+
+.modalFieldGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: right;
+}
+
+.modalFieldGroup label {
+    font-weight: 700;
+}
+
+.modalFieldGroup input,
+.modalFieldGroup textarea,
+.modalFieldGroup select {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid #c8d5ea !important;
+    border-radius: 14px;
+    background: #fff;
+    color: #0f172a;
+    outline: none;
+}
+
+.modalFieldGroup input:focus,
+.modalFieldGroup textarea:focus,
+.modalFieldGroup select:focus {
+    border-color: #2563eb !important;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.modalFieldGroup textarea {
+    resize: vertical;
+    min-height: 110px;
+}
+
+.linkInputRow {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 10px;
+    align-items: center;
+}
+
+.storyModalSurface {
+    width: min(100%, 1100px) !important;
+}
+
+.presetStorySection {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.presetStoryHeader h3 {
+    margin: 0;
+    color: #0f172a;
+}
+
+.presetStoryHeader p {
+    margin: 8px 0 0;
+    color: #475569;
+    line-height: 1.7;
+}
+
+.presetStoryAccordion {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.presetStoryGroup {
+    border: 1px solid #dbe7f6;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.presetStoryQuestion {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 18px;
+    border: 0;
+    background: linear-gradient(180deg, #ffffff, #f3f7ff);
+    color: #0f172a;
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: right;
+    cursor: pointer;
+}
+
+.presetStoryQuestion.active {
+    color: #1d4ed8;
+}
+
+.presetStoryToggle {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: #e8efff;
+    color: #1d4ed8;
+    font-size: 1.3rem;
+    line-height: 1;
+}
+
+.presetStoryAnswer {
+    padding: 16px;
+    border-top: 1px solid #e4ebf7;
+    background: #f8fbff;
+}
+
+.presetStoryGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 14px;
+}
+
+.presetStoryCard {
+    border: 1px solid #dbe7f6;
+    border-radius: 18px;
+    background: #fff;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: right;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    width: 100%;
+}
+
+.presetStoryCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+}
+
+.presetStoryCard.is-selected {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
+}
+
+.presetStoryThumb {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border-radius: 14px;
+}
+
+.presetStoryLabel {
+    color: #0f172a;
+    font-weight: 700;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.modalActions {
+    margin-top: 8px;
+}
+
+.modalActions .save,
+.modalActions .cancel {
+    min-width: 120px;
+}
+
+.storyCardsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+    width: 100%;
+}
+
+.storyGridItem {
+    display: flex;
+    justify-content: center;
+}
+
+.storyCardsGrid .storyCard {
+    width: 100% !important;
+    max-width: 22rem;
+    margin: 0 !important;
+}
+
+.storyCardsGrid .storyCard .btn {
+    width: 100%;
+}
+
+.dashboardStatsGrid,
+.accountSettingsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.dashboardStatCard {
+    padding: 18px;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(4, 15, 59, 0.36);
+    text-align: right;
+}
+
+.dashboardStatCard strong {
+    display: block;
+    margin-top: 10px;
+    color: #fff;
+    font-size: 2rem;
+    line-height: 1.2;
+}
+
+.dashboardStatCard p,
+.dashboardStatLabel {
+    color: #d8e7ff;
+}
+
+.dashboardStatLabel {
+    font-weight: 700;
+}
+
+.accountFeedback {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    font-weight: 700;
+}
+
+.accountFeedback-success {
+    background: rgba(34, 197, 94, 0.14);
+    border: 1px solid rgba(34, 197, 94, 0.28);
+    color: #dcfce7;
+}
+
+.accountFeedback-error {
+    background: rgba(239, 68, 68, 0.14);
+    border: 1px solid rgba(239, 68, 68, 0.28);
+    color: #fee2e2;
+}
+
+.social-icons-list {
+    gap: 10px;
+}
+
+.social-icons-list .social-icon-item {
+    margin: 0;
+}
+
+.editActionsPanel {
+    margin-top: 6px;
+}
+
+.editActionsHint {
+    margin: 0 0 12px;
+    text-align: center;
+}
+.fab-edit-button {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0ea5e9, #2563eb);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .fab-edit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+  }
+@media (max-width:950px) {
+
+    .editGuideSteps,
+    .primaryContactGrid,
+    .dashboardStatsGrid,
+    .accountSettingsGrid,
+    .dashboardTabs {
+        grid-template-columns: 1fr;
+    }
+
+    .editSectionHeaderSplit {
+        flex-direction: column;
+    }
+
+    .addLink .addLinker,
+    .cropImg .croper,
+    .editStoryHolder .modalSurface {
+        width: 100%;
+    }
+}
+
+@media (max-width:640px) {
+
+    .editGuide,
+    .editSectionCard {
+        padding: 18px 14px;
+        border-radius: 18px;
+    }
+
+    .inlineAddButton,
+    .addStoryBtn {
+        width: 100%;
+    }
+
+    .linkInputRow {
+        grid-template-columns: 1fr;
+    }
+
+    .modalActions {
+        flex-direction: column;
+    }
+
+    .modalActions .save,
+    .modalActions .cancel {
+        width: 100%;
+    }
 }
